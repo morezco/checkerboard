@@ -1,4 +1,5 @@
-export type b = 0 | 1;
+export type bit = 0 | 1;
+type b = bit;
 
 export type GridInterface = [
   [b, b, b, b, b, b, b, b, b, b, b, b, b],

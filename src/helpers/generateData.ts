@@ -1,8 +1,8 @@
-import { b, GridInterface } from "interfaces/Board";
+import { bit, GridInterface } from "interfaces/Board";
 
 type Matrix<T> = Array<Array<T>>;
 
-const r = (): b => Number(Math.random() > 0.5) as b;
+const r = (): bit => Number(Math.random() > 0.5) as bit;
 
 export const generateData = (): GridInterface => [
   [r(), r(), r(), r(), r(), r(), r(), r(), r(), r(), r(), r(), r()],
@@ -31,10 +31,10 @@ export const zeroesGrid = (): GridInterface => [
 ];
 
 export const toBinary = (matrix: GridInterface) =>
-  matrix.map((row: Array<b>) => row.join("")).join("");
+  matrix.map((row: Array<bit>) => row.join("")).join("");
 
 export const toMatrix = (binary: string) => {
-  const result: Matrix<b> = [];
+  const result: Matrix<bit> = [];
 
   binary = binary.replace(/ /g, "");
 
@@ -47,7 +47,7 @@ export const toMatrix = (binary: string) => {
       binary
         .substring(0, 13)
         .split("")
-        .map((x: string) => Number(x) as b)
+        .map((x: string) => Number(x) as bit)
     );
     binary = binary.substring(13);
   }

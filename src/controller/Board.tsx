@@ -52,6 +52,10 @@ export function Board({ children }: Props) {
     [data, check, uncheck]
   );
 
+  useEffect(() => {
+    save(LS_DATA, toBinary(data));
+  }, [data]);
+
   return (
     <BoardContext.Provider value={{ data, check, uncheck, toggle }}>
       {children}
