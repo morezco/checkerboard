@@ -7,13 +7,16 @@ interface Props {
 }
 
 export const Tile = styled.div<Props>`
-  width: 100%;
-  height: 100%;
+  width: calc(100 / 13) vw;
+  height: 10vh;
+
+  transition: all 0.6s ease-in-out;
+  cursor: pointer;
 
   background-color: ${({ checked }) => (checked ? "black" : "white")};
 
-  grid-column-start: ${({ column }) => column};
+  grid-column-start: ${({ column }) => column + 1};
   grid-column-end: ${({ column }) => column + 1};
-  grid-row-start: ${({ row }) => row};
+  grid-row-start: ${({ row }) => row + 1};
   grid-row-end: ${({ row }) => row + 1};
 `;

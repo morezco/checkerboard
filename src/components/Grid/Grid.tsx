@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { BoardContext as Board } from "controller/contexts";
 import { Container } from "./styles";
 import { Tile } from "./Tile/Tile";
@@ -6,11 +6,15 @@ import { Tile } from "./Tile/Tile";
 export function Grid() {
   const { data } = useContext(Board);
 
-  const Tiles = () => {};
+  console.log("grid", data);
 
-  return (
-    <Container>
-      <></>
-    </Container>
+  const Tiles = useMemo(
+    (): Array<JSX.Element> =>
+      data
+        .map((row, i) => row.map((bit, j) => <Tile row={i} column={j} />))
+        .flat(),
+    [data]
   );
+
+  return <Container>{Tiles}</Container>;
 }

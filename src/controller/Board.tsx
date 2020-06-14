@@ -33,16 +33,20 @@ export function Board({ children }: Props) {
 
   const check = useCallback(
     (x: number, y: number) => {
-      data[x][y] = 1;
-      setData(data);
+      const copy = data.map((row, i) =>
+        i === x ? row.map((bit, j) => (j === y ? 1 : bit)) : [...row]
+      );
+      setData(copy as GridInterface);
     },
     [data]
   );
 
   const uncheck = useCallback(
     (x: number, y: number) => {
-      data[x][y] = 0;
-      setData(data);
+      const copy = data.map((row, i) =>
+        i === x ? row.map((bit, j) => (j === y ? 0 : bit)) : [...row]
+      );
+      setData(copy as GridInterface);
     },
     [data]
   );
